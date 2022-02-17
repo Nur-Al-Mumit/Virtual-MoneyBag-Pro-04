@@ -5,18 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoneyBag</title>
+    <!-- Adding Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <!-- Header Start  -->
     <header>
-        <h1>Virtual MoneyBag</h1>
+        <h1 class="text-6xl	text-center mt-8">Virtual <span class="font-semibold text-rose-500">MoneyBag</span></h1>
     </header>
     <!-- Header End  -->
     <!-- Main Part -->
     <main>
         <!-- Main section -->
-        <section>
-
+        <section class="flex justify-around m-8 flex-col lg:flex-row md:flex-col sm:flex-col">
+            <!-- For the picture -->
+            <div class="mt-8 w-full">
+                <img class="lg:w-9/12 md:w-full sm:w-full" src="images/pic1.jpg" alt="">
+            </div>
+            <!-- Calculation Section -->
+            <div class="bg-rose-100 p-6 mt-8">
+                <div class="mb-8">
+                    <h1 class="text-4xl">Input your Salary</h1>
+                    <p class="text-2xl mt-4">Salary <input class="w-full" id="income-input" type="text"></p>
+                </div>
+                <div class="mt-8">
+                    <h1 class="text-4xl">Your Expense</h1>
+                    <p class="text-2xl mt-4">School <input class="w-full" id="principal-expense" type="text"></p>
+                    <p class="text-2xl">Private <input class="w-full" id="essential-expense" type="text"></p>
+                    <p class="text-2xl">Home <input class="w-full" id="other-expense" type="text"></p>
+                    <button class="bg-rose-400 hover:bg-rose-500 text-white font-bold py-2 px-4 rounded-full mt-4 mb-8" id="submit-button">Submit</button>
+                    <!-- Total Expense -->
+                    <p class="text-2xl w-full">Total Expense: <span id="total-expense">00</span></p>
+                    <p class="text-2xl w-full">Remaining Balance : <span id="remaining-balance">00</span></p>
+                </div>
+                <!-- Savings section -->
+                <div class="mt-8">
+                    <p class="text-2xl">Savings <input class="w-full" type="text"></p>
+                    <p class="text-2xl">% <button class="bg-rose-400 hover:bg-rose-500 text-white font-bold py-2 px-4 rounded-full mt-4">Save</button></p>
+                </div>
+            </div>
         </section>
     </main>
     <script src="js/index.js"></script>
