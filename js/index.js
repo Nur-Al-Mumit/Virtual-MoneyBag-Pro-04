@@ -2,9 +2,15 @@
 function inputs(inputId) {
     const input = document.getElementById(inputId);
     const inputText = input.value;
-    const inputAmount = parseFloat(inputText);
-    input.value = "";
-    return inputAmount;
+    // Set the error case
+    if (inputText < 0 || isNaN(inputText) == true) {
+        alert("Please input Positive numbers only");
+    }  
+    else {
+        const inputAmount = parseFloat(inputText);
+        input.value = "";
+        return inputAmount;
+    }
 }
 
 // Function fot the present amounts, convert the present amount text string to float
@@ -29,12 +35,15 @@ document.getElementById("submit-button").addEventListener("click", function(){
     const salary = inputs("income-input");
     const expenses = principalExpense + essentialExpense + otherExpense;
     const totalExpenses = presentExpense + expenses;
-    
-    if (totalExpenses <= salary) {
+    // Set the error case
+    if (totalExpenses > salary) {
+        alert("You don't have enough money for spend")
+    }
+    else {
         displayValues("total-expense", totalExpenses);
     }
     const remainingBalance = salary - totalExpenses;
-    if (remainingBalance > 0) {
+    if (remainingBalance >= 0) {
         displayValues("remaining-balance", remainingBalance);
     }
 
@@ -45,13 +54,18 @@ document.getElementById("submit-button").addEventListener("click", function(){
         const presentRemaining = presentAmounts("remaining-after-saving");
         const SavingAmount = salary / 100 * savingsInputAmount;
         const totalSavingsAmount = presentSavingAmount + SavingAmount;
-        if (savingsInputAmount > 0) {
+        // Set the error case
+        if (totalSavingsAmount > remainingBalance) {
+            alert("You don't have sufficient balance");
+        }
+        else {
             displayValues("present-saving", totalSavingsAmount);
         }
         const remainingAfterSaving = remainingBalance - totalSavingsAmount;
         const remainingTotalBalance = presentRemaining + remainingAfterSaving;
-        displayValues("remaining-after-saving", remainingTotalBalance);
-
-        
+        // Set the error case
+        if (remainingTotalBalance >= 0) {
+            displayValues("remaining-after-saving", remainingTotalBalance);
+        }
     });
 });
